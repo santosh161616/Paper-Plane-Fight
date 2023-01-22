@@ -108,6 +108,15 @@ public class Player : MonoBehaviour
         return playerHealth;
     }
 
+    public void HealthEarned(int health)
+    {
+        if(playerHealth < hearts.Length)
+        {            
+            playerHealth += health;
+            UpdateHealthUI(playerHealth);
+        }                
+    }
+
     private void ProcessHit(DamageDealer damageDealer)
     {
         playerHealth -= damageDealer.GetDamage();
@@ -127,7 +136,6 @@ public class Player : MonoBehaviour
         {
             if(i < currentHealth)
             {
-                Debug.Log(i);
                 hearts[i].sprite = fullHearts;
             }
             else
