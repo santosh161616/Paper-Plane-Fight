@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject enemyProjectile;
     [SerializeField] GameObject explosionVFX;
     [SerializeField] GameObject powerUp;
+    [SerializeField] GameObject coinSpawn;
+ 
     [SerializeField] AudioClip deathSFX;
     [SerializeField] AudioClip enemyShootSFX;
     [SerializeField] [Range(0, 1)] float deathSoundVolume = 0.7f;
@@ -76,6 +78,12 @@ public class Enemy : MonoBehaviour
         {
             GameObject rewardPickup = Instantiate(powerUp, transform.position, transform.rotation);
             rewardPickup.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -pickupSpeed);
+        }
+        if(randomFactor > 85)
+        {
+            GameObject rewardCoin = Instantiate(coinSpawn, transform.position, transform.rotation);
+            rewardCoin.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -pickupSpeed);
+
         }
     }
 }

@@ -117,6 +117,7 @@ MonoBehaviour:
   enemyProjectile: {fileID: 1737760544331607301, guid: 8682f665d3a26274cac020b29fefbdab, type: 3}
   explosionVFX: {fileID: 1861754800885199884, guid: 0ad6eb668ba390d438c71dbcf8f87c7b, type: 3}
   powerUp: {fileID: 692498465123365651, guid: 08dd6727ad16d494ea4401a6c3923482, type: 3}
+  coinSpawn: {fileID: 6233419820710758990, guid: a7d18e89e8926094cbafcc03e2db4d9a, type: 3}
   deathSFX: {fileID: 8300000, guid: 8fb6f15dab331824b90342551d1aac8f, type: 3}
   enemyShootSFX: {fileID: 8300000, guid: 9348b99ac04f1044aad8eb7b20cf6eab, type: 3}
   deathSoundVolume: 0.4

@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
     [SerializeField] Sprite fullHearts;
     [SerializeField] Sprite emptyHearts;
 
+    [SerializeField] int earnedCoin;
+
     Coroutine firingCoroutine;
 
     float xMin;
@@ -115,6 +117,17 @@ public class Player : MonoBehaviour
             playerHealth += health;
             UpdateHealthUI(playerHealth);
         }                
+    }
+
+    public void RewardCoin(int coin)
+    {
+        earnedCoin += coin;
+    }
+
+    public int GetCoin()
+    {
+        Debug.Log(earnedCoin);
+        return earnedCoin;        
     }
 
     private void ProcessHit(DamageDealer damageDealer)
