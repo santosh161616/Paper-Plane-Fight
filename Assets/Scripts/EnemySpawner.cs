@@ -46,9 +46,24 @@ public class EnemySpawner : MonoBehaviour
             var newEnemy = Instantiate(
             waveConfig.GetEnemyPrefab(),
             waveConfig.GetWayPoints()[0].transform.position, Quaternion.identity);
+
             newEnemy.GetComponent<EnemyPathing>().SetWaveConfig(waveConfig);
             yield return new WaitForSeconds(waveConfig.GetTimeBetweenSpawns());
             
         }
     }
+
+    public bool AllEnemiesDead()
+    {
+        Enemy[] childs = FindObjectsOfType<Enemy>();
+        if (childs.Length > 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
 }

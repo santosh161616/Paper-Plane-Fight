@@ -21,10 +21,12 @@ public class Enemy : MonoBehaviour
     float pickupSpeed = 4f;
     float shotCounter;
     int scoreValue = 100;
-    
+
+    EnemySpawner enemySpawner;
     // Start is called before the first frame update
     void Start()
     {
+        enemySpawner = FindObjectOfType<EnemySpawner>();
         shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
     }
 
@@ -36,6 +38,11 @@ public class Enemy : MonoBehaviour
         {
             EnemyFire();
             shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+        }
+
+        if (enemySpawner.AllEnemiesDead())
+        {
+            FindObjectOfType<Level>().LoadGameOver();
         }
     }
 
@@ -62,6 +69,12 @@ public class Enemy : MonoBehaviour
         damageDealer.Hit(); 
         if (health <= 0)
         {
+            enemySpawner.totalEnemies--;
+            if(enemySpawner.totalEnemies <= 0)
+            {
+                FindObjectOfType<Level>().LoadGameOver();
+            }
+
             FindObjectOfType<GameSession>().AddToScore(scoreValue);
             Destroy(gameObject);
             GameObject explosion = Instantiate(explosionVFX, transform.position, transform.rotation);
@@ -86,4 +99,5 @@ public class Enemy : MonoBehaviour
 
         }
     }
+    
 }
