@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     float shotCounter;
     int scoreValue = 100;
     
-    // Start is called []before the first frame update
+    // Start is called before the first frame update
     void Start()
     {
         shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
