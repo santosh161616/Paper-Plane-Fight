@@ -17,16 +17,17 @@ public class Player : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField] AudioClip deathSFX;
-    [SerializeField] AudioClip playerShootSFX;
+    [SerializeField] AudioClip playerShootSFX;    
+    [SerializeField] AudioClip healthPickupSFX;
+    
+    [SerializeField] float healthPickUpSFXVolume = 0.4f;
     [SerializeField] [Range(0, 1)] float deathSoundVolume = 0.7f;
-    [SerializeField] [Range(0, 1)] float playerShootVolume = 0.4f;
+    [SerializeField] [Range(0, 1)] float playerShootVolume = 0.4f;    
 
     [Header("Health")]
     [SerializeField] Image[] hearts; 
     [SerializeField] Sprite fullHearts;
     [SerializeField] Sprite emptyHearts;
-
-    [SerializeField] int earnedCoin;
 
     Coroutine firingCoroutine;
 
@@ -113,22 +114,12 @@ public class Player : MonoBehaviour
     public void HealthEarned(int health)
     {
         if(playerHealth < hearts.Length)
-        {            
+        {
+            AudioSource.PlayClipAtPoint(healthPickupSFX, Camera.main.transform.position, healthPickUpSFXVolume);
             playerHealth += health;
             UpdateHealthUI(playerHealth);
         }                
-    }
-
-    public void RewardCoin(int coin)
-    {
-        earnedCoin += coin;
-    }
-
-    public int GetCoin()
-    {
-        Debug.Log(earnedCoin);
-        return earnedCoin;        
-    }
+    }    
 
     private void ProcessHit(DamageDealer damageDealer)
     {

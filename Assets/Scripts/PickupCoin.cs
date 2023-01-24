@@ -9,7 +9,7 @@ public class PickupCoin : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<Player>().RewardCoin(coinToReward);
+            FindObjectOfType<GameSession>().RewardCoin(coinToReward);
             Destroy(gameObject);
         }
     }

@@ -5,6 +5,10 @@ using UnityEngine;
 public class GameSession : MonoBehaviour
 {
     int score = 0;
+    [SerializeField] int earnedCoin;
+
+    [SerializeField] AudioClip coinPickupSFX;
+    [SerializeField] float coinPickUPSFXVolume = 0.4f;
     // Start is called before the first frame update
     void Awake()
     {
@@ -31,6 +35,17 @@ public class GameSession : MonoBehaviour
     public void AddToScore(int scoreValue)
     {
         score += scoreValue;
+    }
+
+    public void RewardCoin(int coin)
+    {
+        AudioSource.PlayClipAtPoint(coinPickupSFX, Camera.main.transform.position, coinPickUPSFXVolume);
+        earnedCoin += coin;
+    }
+
+    public int GetCoin()
+    {
+        return earnedCoin;
     }
 
     public void ResetGame()

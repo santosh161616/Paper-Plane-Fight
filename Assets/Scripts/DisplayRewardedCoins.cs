@@ -4,18 +4,18 @@ using UnityEngine;
 using TMPro;
 public class DisplayRewardedCoins : MonoBehaviour
 {
-    Player player;
-    TextMeshProUGUI textUI;
+    GameSession gameSession;
+    [SerializeField] TextMeshProUGUI textUI;
     // Start is called before the first frame update
     void Start()
     {
         textUI = GetComponent<TextMeshProUGUI>();
-        player = FindObjectOfType<Player>();
+        gameSession = FindObjectOfType<GameSession>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        textUI.text = player.GetCoin().ToString();
+        textUI.text = gameSession.GetCoin().ToString();
     }
 }

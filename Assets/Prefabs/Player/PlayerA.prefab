@@ -4914,13 +4914,25 @@ MonoBehaviour:
   speed: 10
   laserSpeed: 10
   padding: 0.2
-  playerHealth: 100
+  playerHealth: 4
   prjectileFiringPeriod: 0.15
   playerLaser: {fileID: 8180977222580375617, guid: 41ab824ba89b8724483ab6224668bf29, type: 3}
   deathSFX: {fileID: 8300000, guid: 7f0971fc0836cee49b8cd392ccf70e38, type: 3}
   playerShootSFX: {fileID: 8300000, guid: 8a38a30a19441014f99edf0d7743b248, type: 3}
+  coinPickupSFX: {fileID: 8300000, guid: 3cbbb3268cd73304abfde71571198ee7, type: 3}
+  healthPickupSFX: {fileID: 8300000, guid: a5f4681861f5c1e45bf18651b13bf4c4, type: 3}
+  coinPickUPSFXVolume: 0.4
+  healthPickUpSFXVolume: 0.4
   deathSoundVolume: 0.7
   playerShootVolume: 0.1
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fullHearts: {fileID: 21300000, guid: a67c27c20a407274ba5dac3beef17b90, type: 3}
+  emptyHearts: {fileID: 21300000, guid: 023721934cba3e44faa9b2b5bf90e607, type: 3}
+  earnedCoin: 0
 --- !u!60 &178837103
 PolygonCollider2D:
   m_ObjectHideFlags: 0
