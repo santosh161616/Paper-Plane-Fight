@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class GameSession : MonoBehaviour
@@ -9,6 +10,8 @@ public class GameSession : MonoBehaviour
 
     [SerializeField] AudioClip coinPickupSFX;
     [SerializeField] float coinPickUPSFXVolume = 0.4f;
+    [SerializeField] private GameObject spawner;
+    [SerializeField] private GameObject startGameCanvas, gameOverCanvas;
     // Start is called before the first frame update
     void Awake()
     {
@@ -27,6 +30,11 @@ public class GameSession : MonoBehaviour
         }
     }
 
+    public void StartGame()
+    {
+        spawner.SetActive(true);
+        startGameCanvas.SetActive(false);
+    }
     public int GetScore()
     {
         return score;        
@@ -48,6 +56,15 @@ public class GameSession : MonoBehaviour
         return earnedCoin;
     }
 
+    public async void GameOver()
+    {
+        gameOverCanvas.SetActive(true);
+        await Task.Delay(3000);
+        gameOverCanvas.SetActive(false);
+        spawner.SetActive(false);
+        startGameCanvas.SetActive(true);
+
+    }
     public void ResetGame()
     {
         Destroy(gameObject);

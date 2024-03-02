@@ -128,9 +128,9 @@ public class Player : MonoBehaviour
         UpdateHealthUI(playerHealth);
         if(playerHealth <= 0f)
         {
-            FindObjectOfType<Level>().LoadGameOver();
             Destroy(gameObject);
             AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSoundVolume);
+            FindObjectOfType<GameSession>().GameOver();
         }
     }
 
