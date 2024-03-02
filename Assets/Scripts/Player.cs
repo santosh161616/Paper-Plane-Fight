@@ -127,10 +127,10 @@ public class Player : MonoBehaviour
         damageDealer.Hit();
         UpdateHealthUI(playerHealth);
         if(playerHealth <= 0f)
-        {
-            Destroy(gameObject);
-            AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSoundVolume);
+        {            
             FindObjectOfType<GameSession>().GameOver();
+            gameObject.SetActive(false);
+            AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSoundVolume);
         }
     }
 

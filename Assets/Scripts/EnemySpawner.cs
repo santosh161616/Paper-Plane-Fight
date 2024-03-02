@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
     public int totalEnemies;
 
     // Start is called before the first frame update
-    IEnumerator Start()
+    public IEnumerator StartWaves()
     {
         do
         {
@@ -19,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
         while (isLooping);
     }
 
-    private IEnumerator SpawnAllWaves()
+    public IEnumerator SpawnAllWaves()
     {
         for (int waveIndex = startingWave; waveIndex < waveConfigs.Count; waveIndex++)
         {
