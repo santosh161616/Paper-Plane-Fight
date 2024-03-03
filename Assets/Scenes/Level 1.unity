@@ -255,7 +255,6 @@ GameObject:
   - component: {fileID: 634734168}
   - component: {fileID: 634734167}
   - component: {fileID: 634734166}
-  - component: {fileID: 634734169}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -1172,7 +1171,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -3800,8 +3799,8 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 6.283185
-      minScalar: -6.283185
+      scalar: 3.4906585
+      minScalar: -3.4906585
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3924,12 +3923,13 @@ ParticleSystem:
     enabled: 0
     serializedVersion: 4
     type: 0
-    collisionMode: 0
+    collisionMode: 1
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
     multiplyColliderForceByCollisionAngle: 1
-    m_Planes: []
+    m_Planes:
+    - {fileID: 0}
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
@@ -4121,7 +4121,7 @@ ParticleSystem:
       properties: 0
       emitProbability: 1
   LightsModule:
-    enabled: 0
+    enabled: 1
     ratio: 0
     light: {fileID: 0}
     randomDistribution: 1
@@ -5073,29 +5073,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &634734169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 634734165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8285bee34cfa49439881f25c632f243, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  minTimeBetweenShots: 0.1
-  maxTimeBetweenShots: 2
-  enemyProjectile: {fileID: 0}
-  explosionVFX: {fileID: 0}
-  powerUp: {fileID: 0}
-  coinSpawn: {fileID: 0}
-  deathSFX: {fileID: 0}
-  enemyShootSFX: {fileID: 0}
-  deathSoundVolume: 0.7
-  enemyLaserVolume: 0.5
 --- !u!114 &1022896466 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 416236762172044811, guid: b1a239c9fb07d9042ae7559d762cd26c, type: 3}
@@ -5313,6 +5290,18 @@ PrefabInstance:
     - target: {fileID: 1636850161, guid: 08b4a0c146637d24484606686309d635, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GameSession, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1898680652, guid: 08b4a0c146637d24484606686309d635, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a18972a8664dce40b27314644f152cb, type: 2}
+    - target: {fileID: 1898680652, guid: 08b4a0c146637d24484606686309d635, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 271094809143804298, guid: 8a18972a8664dce40b27314644f152cb, type: 2}
+    - target: {fileID: 1898680652, guid: 08b4a0c146637d24484606686309d635, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6958152200646868141, guid: 08b4a0c146637d24484606686309d635, type: 3}
       propertyPath: m_Pivot.x

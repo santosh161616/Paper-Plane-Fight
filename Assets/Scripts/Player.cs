@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         SetupMoveBounderies();
-        
+
     }
 
     // Update is called once per frame
