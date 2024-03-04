@@ -255,8 +255,9 @@ GameObject:
   - component: {fileID: 634734168}
   - component: {fileID: 634734167}
   - component: {fileID: 634734166}
+  - component: {fileID: 634734169}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Particle System (Astroid)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -342,7 +343,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634734165}
   serializedVersion: 8
-  lengthInSec: 4
+  lengthInSec: 8
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -417,7 +418,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 6
+      scalar: 12
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -470,7 +471,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -905,7 +906,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 1000
+    maxNumParticles: 1
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -3922,9 +3923,9 @@ ParticleSystem:
   CollisionModule:
     enabled: 0
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 1
-    colliderForce: 0
+    colliderForce: 1
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
     multiplyColliderForceByCollisionAngle: 1
@@ -3986,7 +3987,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4094,7 +4095,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 256
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -5073,6 +5074,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &634734169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634734165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5eae6256070d745a705ebe70517cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1022896466 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 416236762172044811, guid: b1a239c9fb07d9042ae7559d762cd26c, type: 3}
@@ -6174,6 +6187,7 @@ SceneRoots:
   - {fileID: 3919155872575611316}
   - {fileID: 1976360143567430703}
   - {fileID: 261627089}
+  - {fileID: 634734168}
   - {fileID: 1682065837}
   - {fileID: 2072349887}
   - {fileID: 1344678191}
@@ -6184,4 +6198,3 @@ SceneRoots:
   - {fileID: 66395793}
   - {fileID: 2108496440}
   - {fileID: 1390858641}
-  - {fileID: 634734168}
