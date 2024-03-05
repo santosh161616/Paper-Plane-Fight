@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,24 +13,26 @@ public class Player : MonoBehaviour
     [SerializeField] int playerHealth;
 
     [Header("Projectile")]
-    [SerializeField]float prjectileFiringPeriod = .15f;    
+    [SerializeField] float prjectileFiringPeriod = .15f;
     [SerializeField] GameObject playerLaser;
 
     [Header("Sounds")]
     [SerializeField] AudioClip deathSFX;
-    [SerializeField] AudioClip playerShootSFX;    
+    [SerializeField] AudioClip playerShootSFX;
     [SerializeField] AudioClip healthPickupSFX;
-    
+
     [SerializeField] float healthPickUpSFXVolume = 0.4f;
-    [SerializeField] [Range(0, 1)] float deathSoundVolume = 0.7f;
-    [SerializeField] [Range(0, 1)] float playerShootVolume = 0.4f;    
+    [SerializeField][Range(0, 1)] float deathSoundVolume = 0.7f;
+    [SerializeField][Range(0, 1)] float playerShootVolume = 0.4f;
 
     [Header("Health")]
-    [SerializeField] Image[] hearts; 
+    [SerializeField] Image[] hearts;
     [SerializeField] Sprite fullHearts;
     [SerializeField] Sprite emptyHearts;
 
     Coroutine firingCoroutine;
+    [SerializeField] float magnetStrength = 5f;
+    [SerializeField] bool isMagnetic = true;
 
     float xMin;
     float xMax;
@@ -48,13 +51,17 @@ public class Player : MonoBehaviour
     {
         Movement();
         Fire();
+
+        //Enabling Magnet field
+        if(isMagnetic)
+            CoinMagnetSystem();
     }
 
     private void Movement()
     {
         var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
         var deltaY = Input.GetAxis("Vertical") * Time.deltaTime * speed;
-        
+
         var newXPos = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);
         var newYPos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
 
@@ -74,7 +81,7 @@ public class Player : MonoBehaviour
 
     private void Fire()
     {
-        if(Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             firingCoroutine = StartCoroutine(PlayerShooting());
         }
@@ -113,21 +120,21 @@ public class Player : MonoBehaviour
 
     public void HealthEarned(int health)
     {
-        if(playerHealth < hearts.Length)
+        if (playerHealth < hearts.Length)
         {
             AudioSource.PlayClipAtPoint(healthPickupSFX, Camera.main.transform.position, healthPickUpSFXVolume);
             playerHealth += health;
             UpdateHealthUI(playerHealth);
-        }                
-    }    
+        }
+    }
 
     private void ProcessHit(DamageDealer damageDealer)
     {
         playerHealth -= damageDealer.GetDamage();
         damageDealer.Hit();
         UpdateHealthUI(playerHealth);
-        if(playerHealth <= 0f)
-        {            
+        if (playerHealth <= 0f)
+        {
             FindObjectOfType<GameSession>().GameOver();
             gameObject.SetActive(false);
             AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSoundVolume);
@@ -138,7 +145,7 @@ public class Player : MonoBehaviour
     {
         for (int i = 0; i < hearts.Length; i++)
         {
-            if(i < currentHealth)
+            if (i < currentHealth)
             {
                 hearts[i].sprite = fullHearts;
             }
@@ -149,4 +156,18 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void CoinMagnetSystem()
+    {
+        GameObject[] coins = GameObject.FindGameObjectsWithTag("Pickup");
+        foreach (var coin in coins)
+        {
+            float distance = Vector2.Distance(transform.position, coin.transform.position);
+            if (distance <= magnetStrength)
+            {
+                Debug.Log("Distance -- "+distance);
+                coin.transform.DOMove(transform.position, 1f).OnComplete(() => coin.GetComponent<SpriteRenderer>().DOFade(0, 0.5f));               
+            }
+        }
+
+    }
 }

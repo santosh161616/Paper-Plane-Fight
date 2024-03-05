@@ -6116,6 +6116,10 @@ PrefabInstance:
       value: PlayerA
       objectReference: {fileID: 0}
     - target: {fileID: 8529619703737742913, guid: a459d499b991f82408ed6700df2c938b, type: 3}
+      propertyPath: magnetStrength
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529619703737742913, guid: a459d499b991f82408ed6700df2c938b, type: 3}
       propertyPath: hearts.Array.data[0]
       value: 
       objectReference: {fileID: 192096556}
