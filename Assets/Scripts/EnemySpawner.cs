@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -35,10 +36,10 @@ public class EnemySpawner : MonoBehaviour
                 Debug.Log("Total Number of Enemies: " + totalEnemies);
             }
             yield return StartCoroutine(SpawnAllEnemiesInWave(currentWave));
-          
+
         }
     }
-    
+
     private IEnumerator SpawnAllEnemiesInWave(WaveConfig waveConfig)
     {
         for (int enemyCount = 0; enemyCount < waveConfig.GetNumberOfEnemies(); enemyCount++)
@@ -48,7 +49,14 @@ public class EnemySpawner : MonoBehaviour
             waveConfig.GetWayPoints()[0].transform.position, Quaternion.identity);
             newEnemy.GetComponent<EnemyPathing>().SetWaveConfig(waveConfig);
             yield return new WaitForSeconds(waveConfig.GetTimeBetweenSpawns());
-            
+
         }
+        SpawnBoss(waveConfig);
+    }
+
+    public async void SpawnBoss(WaveConfig waveConfig)
+    {
+        var boss = Instantiate(waveConfig.GetBossPrefab(), waveConfig.GetBossWayPoints()[0].transform.position, Quaternion.identity);
+        boss.GetComponent<EnemyPathing>().SetWaveConfig(waveConfig);
     }
 }

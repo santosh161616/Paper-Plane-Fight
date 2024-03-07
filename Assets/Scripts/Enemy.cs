@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float health = 100;
+    [SerializeField] public float health = 100;
     [SerializeField] float minTimeBetweenShots = 0.1f;
     [SerializeField] float maxTimeBetweenShots = 2f;
     [SerializeField] GameObject enemyProjectile;

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Wave 4
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1417427836720203925, guid: 1248c8adc06f9c24caacf10c81913205, type: 3}
+  bossPrefab: {fileID: 6773797509114471155, guid: c8318578956dea0429408fa22d156096, type: 3}
   pathPrefab: {fileID: 433229993467125913, guid: 0af2ba7d26e8ede4bb5c0eddf5fb478f, type: 3}
+  bossPath: {fileID: 433229993467125913, guid: b63fb8972438d174fa1e28b82cb9ecb7, type: 3}
   timeBetweenSpawns: 0.5
   spawnRandomFactor: 0.3
   numberOfEnemies: 5
