@@ -10,8 +10,13 @@ public class Shop : MonoBehaviour
     [SerializeField] private TMP_Text _damage;
     [SerializeField] private TMP_Text _speed;
 
+    [Space]
+    [Header("UI")]
     [SerializeField] private Button _nextButton, _prevButton;
+    [SerializeField] private Slider _healthSlider, _damageSlider, _speedSlider;
 
+    [Space]
+    [Header("Local Data")]
     [SerializeField] private PlayerSelectionData _selectedPlayer;
     [SerializeField] private int defaultIndex = 0;
 
@@ -24,9 +29,17 @@ public class Shop : MonoBehaviour
     {
         _playerImage.sprite = selectionData.playersData[index].playerImage;
         _playerName.text = selectionData.playersData[index].PlayerName;
-        _health.text = selectionData.playersData[index].Health;
-        _damage.text = selectionData.playersData[index].Damage;
-        _speed.text = selectionData.playersData[index].Speed;
+        _health.text = selectionData.playersData[index].Health.ToString();
+        _healthSlider.value = selectionData.playersData[index].Health;
+        _healthSlider.interactable = false;
+
+        _damage.text = selectionData.playersData[index].Damage.ToString();
+        _damageSlider.value = selectionData.playersData[index].Damage;
+        _damageSlider.interactable = false;
+
+        _speed.text = selectionData.playersData[index].Speed.ToString();
+        _speedSlider.value = selectionData.playersData[index].Speed;
+        _speedSlider.interactable = false;
     }
 
     public void NextSelect()

@@ -13,7 +13,7 @@ public class PlayerData
 {
     public Sprite playerImage;
     public string PlayerName;
-    public string Health;
-    public string Damage;
-    public string Speed;
+    public int Health;
+    public int Damage;
+    public int Speed;
 }

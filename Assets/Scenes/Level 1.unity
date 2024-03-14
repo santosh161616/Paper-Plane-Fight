@@ -221,6 +221,9 @@ MonoBehaviour:
   _speed: {fileID: 1769136678}
   _nextButton: {fileID: 454462215}
   _prevButton: {fileID: 1662848458}
+  _healthSlider: {fileID: 2011970040}
+  _damageSlider: {fileID: 473517452}
+  _speedSlider: {fileID: 1478741566}
   _selectedPlayer: {fileID: 11400000, guid: 7fa5bb38db804ef4ea9d3f5594d3c352, type: 2}
   defaultIndex: 1
 --- !u!1001 &66395793
@@ -1280,9 +1283,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 668440061}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 1
+  m_MaxValue: 100
+  m_WholeNumbers: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7660,8 +7663,8 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1769409589}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_MaxValue: 100
+  m_WholeNumbers: 1
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9628,8 +9631,8 @@ MonoBehaviour:
   m_HandleRect: {fileID: 663724753}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_MaxValue: 100
+  m_WholeNumbers: 1
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
