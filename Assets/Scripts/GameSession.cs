@@ -12,7 +12,8 @@ public class GameSession : MonoBehaviour
     [SerializeField] float coinPickUPSFXVolume = 0.4f;
     [SerializeField] private EnemySpawner spawner;
     [SerializeField] private GameObject startGameCanvas, gameOverCanvas;
-    [SerializeField] private Player player;
+    [SerializeField] private GameObject playerSpawnPoint;
+    [SerializeField] private List< Player> players;
     // Start is called before the first frame update
     void Awake()
     {
@@ -33,13 +34,18 @@ public class GameSession : MonoBehaviour
 
     public void StartGame()
     {
-        if (!player.gameObject.activeInHierarchy)
-        {
-            player.gameObject.SetActive(true);
-            player.HealthEarned(health: 4);
-        }
+        SelectPlayer(0);
         StartCoroutine(spawner.StartWaves());
         startGameCanvas.SetActive(false);
+    }
+
+    private void SelectPlayer(int index)
+    {
+        if (!players[index].gameObject.activeInHierarchy)
+        {
+            players[index].gameObject.SetActive(true);
+            players[index].HealthEarned(health: 4);
+        }
     }
     public int GetScore()
     {
