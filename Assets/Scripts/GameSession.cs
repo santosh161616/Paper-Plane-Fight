@@ -13,7 +13,7 @@ public class GameSession : MonoBehaviour
     [SerializeField] private EnemySpawner spawner;
     [SerializeField] private GameObject startGameCanvas, gameOverCanvas;
     [SerializeField] private GameObject playerSpawnPoint;
-    [SerializeField] private List< Player> players;
+    [SerializeField] private List<Player> players;
     // Start is called before the first frame update
     void Awake()
     {
@@ -22,7 +22,7 @@ public class GameSession : MonoBehaviour
 
     public void SetupSingleton()
     {
-        if(FindObjectsOfType(GetType()).Length > 1)
+        if (FindObjectsOfType(GetType()).Length > 1)
         {
             Destroy(gameObject);
         }
@@ -43,13 +43,14 @@ public class GameSession : MonoBehaviour
     {
         if (!players[index].gameObject.activeInHierarchy)
         {
-            players[index].gameObject.SetActive(true);
-            players[index].HealthEarned(health: 4);
+            var player = Instantiate(players[index], playerSpawnPoint.transform.position, Quaternion.identity);
+            player.GetComponent<Player>().HealthEarned(health: 4);
+            //players[index].HealthEarned(health: 4);
         }
     }
     public int GetScore()
     {
-        return score;        
+        return score;
     }
 
     public void AddToScore(int scoreValue)
