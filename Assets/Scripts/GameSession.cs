@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameSession : MonoBehaviour
 {
@@ -14,6 +15,13 @@ public class GameSession : MonoBehaviour
     [SerializeField] private GameObject startGameCanvas, gameOverCanvas;
     [SerializeField] private GameObject playerSpawnPoint;
     [SerializeField] private List<Player> players;
+
+    [Header("Health")]
+    [SerializeField] public Image[] hearts;
+    [SerializeField] Sprite fullHearts;
+    [SerializeField] Sprite emptyHearts;
+
+    [SerializeField] public static GameSession Instance { get; private set; }
     // Start is called before the first frame update
     void Awake()
     {
@@ -22,14 +30,20 @@ public class GameSession : MonoBehaviour
 
     public void SetupSingleton()
     {
-        if (FindObjectsOfType(GetType()).Length > 1)
+        //if (FindObjectsOfType(GetType()).Length > 1)
+        //{
+        //    Destroy(gameObject);
+        //}
+        //else
+        //{
+        //    DontDestroyOnLoad(gameObject);
+        //}
+        if (Instance != null && Instance != this)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-        }
+        Instance = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void StartGame()
@@ -56,6 +70,21 @@ public class GameSession : MonoBehaviour
     public void AddToScore(int scoreValue)
     {
         score += scoreValue;
+    }
+
+    public void UpdateHealthUI(int currentHealth)
+    {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < currentHealth)
+            {
+                hearts[i].sprite = fullHearts;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHearts;
+            }
+        }
     }
 
     public void RewardCoin(int coin)

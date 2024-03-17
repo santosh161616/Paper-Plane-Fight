@@ -25,11 +25,6 @@ public class Player : MonoBehaviour
     [SerializeField][Range(0, 1)] float deathSoundVolume = 0.7f;
     [SerializeField][Range(0, 1)] float playerShootVolume = 0.4f;
 
-    [Header("Health")]
-    [SerializeField] Image[] hearts;
-    [SerializeField] Sprite fullHearts;
-    [SerializeField] Sprite emptyHearts;
-
     Coroutine firingCoroutine;
     [SerializeField] float magnetStrength = 5f;
     [SerializeField] bool isMagnetic = true;
@@ -120,11 +115,11 @@ public class Player : MonoBehaviour
 
     public void HealthEarned(int health)
     {
-        if (playerHealth < hearts.Length)
+        if (playerHealth < GameSession.Instance.hearts.Length)
         {
             AudioSource.PlayClipAtPoint(healthPickupSFX, Camera.main.transform.position, healthPickUpSFXVolume);
             playerHealth += health;
-            UpdateHealthUI(playerHealth);
+            GameSession.Instance.UpdateHealthUI(playerHealth);
         }
     }
 
@@ -132,7 +127,7 @@ public class Player : MonoBehaviour
     {
         playerHealth -= damageDealer.GetDamage();
         damageDealer.Hit();
-        UpdateHealthUI(playerHealth);
+        GameSession.Instance.UpdateHealthUI(playerHealth);
         if (playerHealth <= 0f)
         {
             FindObjectOfType<GameSession>().GameOver();
@@ -141,20 +136,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void UpdateHealthUI(int currentHealth)
-    {
-        for (int i = 0; i < hearts.Length; i++)
-        {
-            if (i < currentHealth)
-            {
-                hearts[i].sprite = fullHearts;
-            }
-            else
-            {
-                hearts[i].sprite = emptyHearts;
-            }
-        }
-    }
 
     private void CoinMagnetSystem()
     {
