@@ -21,7 +21,7 @@ public class GameSession : MonoBehaviour
     [SerializeField] Sprite fullHearts;
     [SerializeField] Sprite emptyHearts;
 
-    [SerializeField] public static GameSession Instance { get; private set; }
+    public static GameSession Instance { get; private set; }
     // Start is called before the first frame update
     void Awake()
     {
@@ -48,12 +48,12 @@ public class GameSession : MonoBehaviour
 
     public void StartGame()
     {
-        SelectPlayer(0);
+        SelectCurrentPlayer(0);
         StartCoroutine(spawner.StartWaves());
         startGameCanvas.SetActive(false);
     }
 
-    private void SelectPlayer(int index)
+    private void SelectCurrentPlayer(int index)
     {
         if (!players[index].gameObject.activeInHierarchy)
         {

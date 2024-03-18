@@ -18,63 +18,89 @@ MonoBehaviour:
     Health: 35
     Damage: 1
     Speed: 10
+    totalAds: 0
+    adAlreadyShown: 0
   - playerImage: {fileID: 21300000, guid: b06c342401c4e604988f55f6bf5a4433, type: 3}
     PlayerName: MiG-29
     Health: 40
-    Damage: 1.2
+    Damage: 1
     Speed: 12
+    totalAds: 5
+    adAlreadyShown: 0
   - playerImage: {fileID: 21300000, guid: 2bdef2c2ff724c7409032a06735f3547, type: 3}
     PlayerName: Mirage 2000
     Health: 42
-    Damage: 1.5
+    Damage: 1
     Speed: 15
+    totalAds: 7
+    adAlreadyShown: 0
   - playerImage: {fileID: 21300000, guid: 9691f91e5725e1f44bcc9451a42feb79, type: 3}
     PlayerName: Beriev A-50
     Health: 35
     Damage: 1
     Speed: 18
+    totalAds: 9
+    adAlreadyShown: 0
   - playerImage: {fileID: 21300000, guid: 7d83d8502e8c1c541ac8827a2f9a2d35, type: 3}
     PlayerName: Global 5000
     Health: 25
     Damage: 1
     Speed: 8
+    totalAds: 10
+    adAlreadyShown: 0
   - playerImage: {fileID: 21300000, guid: 17f4371ab142cdb4fbd350558d7800cd, type: 3}
     PlayerName: Gulfstream G100
     Health: 28
-    Damage: .8
+    Damage: 0
     Speed: 12
+    totalAds: 12
+    adAlreadyShown: 0
   - playerImage: {fileID: 21300000, guid: 2716e896b6361fe4ca9fc880790c01df, type: 3}
     PlayerName: Boeing 737
     Health: 30
     Damage: 1
     Speed: 25
+    totalAds: 15
+    adAlreadyShown: 0
   - playerImage: {fileID: 21300000, guid: 0bc2c47feeeb7ac43a168ae0865a1493, type: 3}
     PlayerName: Boeing 777
     Health: 15
     Damage: 1
     Speed: 5
+    totalAds: 16
+    adAlreadyShown: 0
   - playerImage: {fileID: 21300000, guid: d63b2075e35d23440be7e5badec78db2, type: 3}
     PlayerName: Airbus A321
     Health: 35
-    Damage: 1.8
+    Damage: 1
     Speed: 3
+    totalAds: 18
+    adAlreadyShown: 0
   - playerImage: {fileID: 21300000, guid: 60d20a9022c81ed4784667e1c058d408, type: 3}
     PlayerName: C-130J Hercules
     Health: 40
     Damage: 2
     Speed: 9
+    totalAds: 20
+    adAlreadyShown: 0
   - playerImage: {fileID: 21300000, guid: 555582ee6dc372240a0dbf88f205cb77, type: 3}
     PlayerName: Antonov An-32
     Health: 20
     Damage: 2
     Speed: 15
+    totalAds: 22
+    adAlreadyShown: 0
   - playerImage: {fileID: 21300000, guid: a3f7ac8ac1ea018468666f6ed2c73139, type: 3}
     PlayerName: Ilyushin Il-76
     Health: 45
-    Damage: 2.5
+    Damage: 2
     Speed: 10
+    totalAds: 25
+    adAlreadyShown: 0
   - playerImage: {fileID: 21300000, guid: 7e6fc02594fa98240959a0f7412202c5, type: 3}
     PlayerName: Gulfstream III
     Health: 50
     Damage: 3
     Speed: 8
+    totalAds: 30
+    adAlreadyShown: 0

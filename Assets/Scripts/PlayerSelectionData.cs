@@ -16,4 +16,6 @@ public class PlayerData
     public int Health;
     public int Damage;
     public int Speed;
+    public int totalAds;
+    public int adAlreadyShown;
 }
