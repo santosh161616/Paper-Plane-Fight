@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,14 +22,21 @@ public class Shop : MonoBehaviour
     [SerializeField] private PlayerSelectionData _selectedPlayer;
     [SerializeField] private int defaultIndex = 0;
 
+    [Space]
+    [Header("Players Data")]
+    [SerializeField] private List<Player> _players;
+    private int _currentPlayerIndex;
+    [SerializeField] public int CurrentPLayerIndex { get { return _currentPlayerIndex; } set {  _currentPlayerIndex = value; } }
+
     void Start()
     {
-        SelectPlayer(_selectedPlayer, defaultIndex);
+        SetPlayerData(_selectedPlayer, defaultIndex);
         AddingListeners();
         SetAdData(0);
     }
-    private void SelectPlayer(PlayerSelectionData selectionData, int index)
+    private void SetPlayerData(PlayerSelectionData selectionData, int index)
     {
+        CurrentPLayerIndex = index;
         _playerImage.sprite = selectionData.playersData[index].playerImage;
         _playerName.text = selectionData.playersData[index].PlayerName;
         _adText.text = selectionData.playersData[index].adAlreadyShown.ToString() + "/" + selectionData.playersData[index].totalAds.ToString();
@@ -47,15 +55,15 @@ public class Shop : MonoBehaviour
 
     public void NextSelect()
     {
-        if (defaultIndex != _selectedPlayer.playersData.Count)
+        if (defaultIndex < _selectedPlayer.playersData.Count)
         {
-            SelectPlayer(_selectedPlayer, defaultIndex);
+            SetPlayerData(_selectedPlayer, defaultIndex);
             defaultIndex++;
         }
         else
         {
             defaultIndex = 0;
-            SelectPlayer(_selectedPlayer, defaultIndex);
+            SetPlayerData(_selectedPlayer, defaultIndex);
         }
     }
 
@@ -76,14 +84,19 @@ public class Shop : MonoBehaviour
     {
         if (defaultIndex < 0)
         {
-            SelectPlayer(_selectedPlayer, defaultIndex);
+            SetPlayerData(_selectedPlayer, defaultIndex);
             defaultIndex--;
         }
         else
         {
             defaultIndex = _selectedPlayer.playersData.Count - 1;
-            SelectPlayer(_selectedPlayer, defaultIndex);
+            SetPlayerData(_selectedPlayer, defaultIndex);
         }
+    }
+    
+    public void SelectPlayer()
+    {
+
     }
 
     void AddingListeners()
@@ -92,5 +105,8 @@ public class Shop : MonoBehaviour
         _nextButton.onClick.AddListener(() => { NextSelect(); });
         _prevButton.onClick.RemoveAllListeners();
         _prevButton.onClick.AddListener(() => { PrevSelect(); });
+        _selectButton.onClick.RemoveAllListeners();
+        _selectButton.onClick.AddListener(() => { PrevSelect(); });
+
     }
 }
