@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
             GameObject laser =
                     Instantiate(playerLaser, transform.position, Quaternion.identity)
                     as GameObject;
-            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, laserSpeed);
+            laser.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, laserSpeed);
             yield return new WaitForSeconds(prjectileFiringPeriod);
 
             //Player shooting soundSFX

@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -38,13 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -67,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 0
@@ -778,15 +774,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 00000000
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -912,15 +910,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 00000000
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -1157,6 +1157,9 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1195,13 +1198,15 @@ ParticleSystemRenderer:
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
-  m_UseCustomVertexStreams: 0
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
+  m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
+  m_UseCustomTrailVertexStreams: 0
+  m_TrailVertexStreams: 00010304
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
@@ -1401,7 +1406,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.5686275}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1465,8 +1470,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.5
+      scalar: 0.4
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -6607,15 +6612,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 00000000
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -7128,15 +7135,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 00000000
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -7505,15 +7514,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 00000000
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -7741,71 +7752,71 @@ PrefabInstance:
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1953349682900208036, guid: 4ee8c75db8e3ba542b917ad87205ffdd, type: 3}
-      propertyPath: hearts.Array.data[0]
+      propertyPath: 'hearts.Array.data[0]'
       value: 
       objectReference: {fileID: 944121150}
     - target: {fileID: 1953349682900208036, guid: 4ee8c75db8e3ba542b917ad87205ffdd, type: 3}
-      propertyPath: hearts.Array.data[1]
+      propertyPath: 'hearts.Array.data[1]'
       value: 
       objectReference: {fileID: 905907881}
     - target: {fileID: 1953349682900208036, guid: 4ee8c75db8e3ba542b917ad87205ffdd, type: 3}
-      propertyPath: hearts.Array.data[2]
+      propertyPath: 'hearts.Array.data[2]'
       value: 
       objectReference: {fileID: 1528506849}
     - target: {fileID: 1953349682900208036, guid: 4ee8c75db8e3ba542b917ad87205ffdd, type: 3}
-      propertyPath: hearts.Array.data[3]
+      propertyPath: 'hearts.Array.data[3]'
       value: 
       objectReference: {fileID: 82705932}
     - target: {fileID: 1953349682900208036, guid: 4ee8c75db8e3ba542b917ad87205ffdd, type: 3}
-      propertyPath: players.Array.data[0]
+      propertyPath: 'players.Array.data[0]'
       value: 
       objectReference: {fileID: 8529619703737742913, guid: a459d499b991f82408ed6700df2c938b, type: 3}
     - target: {fileID: 1953349682900208036, guid: 4ee8c75db8e3ba542b917ad87205ffdd, type: 3}
-      propertyPath: players.Array.data[1]
+      propertyPath: 'players.Array.data[1]'
       value: 
       objectReference: {fileID: 8529619703737742913, guid: 458319b305240a3448962aa1d65454ac, type: 3}
     - target: {fileID: 1953349682900208036, guid: 4ee8c75db8e3ba542b917ad87205ffdd, type: 3}
-      propertyPath: players.Array.data[2]
+      propertyPath: 'players.Array.data[2]'
       value: 
       objectReference: {fileID: 8529619703737742913, guid: 9c6dacdbc613a504a8056fde91a9ca67, type: 3}
     - target: {fileID: 1953349682900208036, guid: 4ee8c75db8e3ba542b917ad87205ffdd, type: 3}
-      propertyPath: players.Array.data[3]
+      propertyPath: 'players.Array.data[3]'
       value: 
       objectReference: {fileID: 8529619703737742913, guid: 374d78aee48dd964eb260d7de585e209, type: 3}
     - target: {fileID: 1953349682900208036, guid: 4ee8c75db8e3ba542b917ad87205ffdd, type: 3}
-      propertyPath: players.Array.data[4]
+      propertyPath: 'players.Array.data[4]'
       value: 
       objectReference: {fileID: 8529619703737742913, guid: c41c3e9916075234ca8832d6d7ad7c38, type: 3}
     - target: {fileID: 1953349682900208036, guid: 4ee8c75db8e3ba542b917ad87205ffdd, type: 3}
-      propertyPath: players.Array.data[5]
+      propertyPath: 'players.Array.data[5]'
       value: 
       objectReference: {fileID: 8529619703737742913, guid: c82318df80606b5448d5cf19df230ee1, type: 3}
     - target: {fileID: 1953349682900208036, guid: 4ee8c75db8e3ba542b917ad87205ffdd, type: 3}
-      propertyPath: players.Array.data[6]
+      propertyPath: 'players.Array.data[6]'
       value: 
       objectReference: {fileID: 8529619703737742913, guid: bf16073eb49bac84db4c0e3982fc7e04, type: 3}
     - target: {fileID: 1953349682900208036, guid: 4ee8c75db8e3ba542b917ad87205ffdd, type: 3}
-      propertyPath: players.Array.data[7]
+      propertyPath: 'players.Array.data[7]'
       value: 
       objectReference: {fileID: 8529619703737742913, guid: e5695bdbcf6655a4ebd1a57b03c2c996, type: 3}
     - target: {fileID: 1953349682900208036, guid: 4ee8c75db8e3ba542b917ad87205ffdd, type: 3}
-      propertyPath: players.Array.data[8]
+      propertyPath: 'players.Array.data[8]'
       value: 
       objectReference: {fileID: 8529619703737742913, guid: 7a71e2d4758209243903b6e970e5a575, type: 3}
     - target: {fileID: 1953349682900208036, guid: 4ee8c75db8e3ba542b917ad87205ffdd, type: 3}
-      propertyPath: players.Array.data[9]
+      propertyPath: 'players.Array.data[9]'
       value: 
       objectReference: {fileID: 8529619703737742913, guid: 71a99da725392ee419102b869502d8a0, type: 3}
     - target: {fileID: 1953349682900208036, guid: 4ee8c75db8e3ba542b917ad87205ffdd, type: 3}
-      propertyPath: players.Array.data[10]
+      propertyPath: 'players.Array.data[10]'
       value: 
       objectReference: {fileID: 8529619703737742913, guid: 56eb9dbf180075541b2a028c36633bce, type: 3}
     - target: {fileID: 1953349682900208036, guid: 4ee8c75db8e3ba542b917ad87205ffdd, type: 3}
-      propertyPath: players.Array.data[11]
+      propertyPath: 'players.Array.data[11]'
       value: 
       objectReference: {fileID: 8529619703737742913, guid: c6a1c78421c7a1d40b7035289b7a70e5, type: 3}
     - target: {fileID: 1953349682900208036, guid: 4ee8c75db8e3ba542b917ad87205ffdd, type: 3}
-      propertyPath: players.Array.data[12]
+      propertyPath: 'players.Array.data[12]'
       value: 
       objectReference: {fileID: 8529619703737742913, guid: 506137334a4555c4490f6e691995a139, type: 3}
     - target: {fileID: 1953349682900208037, guid: 4ee8c75db8e3ba542b917ad87205ffdd, type: 3}
@@ -8263,15 +8274,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 00000000
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -8472,15 +8485,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 00000000
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -8617,15 +8632,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -9211,15 +9228,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 00000000
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -9420,15 +9439,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 00000000
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -9554,15 +9575,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 00000000
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
