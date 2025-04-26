@@ -40,5 +40,11 @@ namespace Plane.Utils
         {
             OnScoreReceived?.Invoke(score);
         }
+
+        public Action<int> OnGetCoin = delegate { };
+        public void GetCoins(int coinValue)
+        {
+            OnGetCoin?.Invoke(coinValue);
+        }
     }
 }

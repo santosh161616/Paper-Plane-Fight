@@ -15,16 +15,6 @@ public class Level : MonoBehaviour
         SceneManager.LoadScene("Level 1");
     }
 
-    //public void LoadGameOver()
-    //{
-    //    StartCoroutine(WaitAfterPlayerDied());        
-    //}
-
-    //IEnumerator WaitAfterPlayerDied()
-    //{
-    //    yield return new WaitForSeconds(3f);
-    //    SceneManager.LoadScene("Game Over");
-    //}
     public void QuitGame()
     {
         Application.Quit();

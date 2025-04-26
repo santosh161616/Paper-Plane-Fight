@@ -109,11 +109,6 @@ public class Player : MonoBehaviour
         ProcessHit(damageDealer);
     }
 
-    public int GetHealth()
-    {
-        return playerHealth;
-    }
-
     public void HealthEarned(int health)
     {
         if (playerHealth < GameSession.Instance.hearts.Length)

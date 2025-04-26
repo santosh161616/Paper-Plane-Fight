@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using Plane.Utils;
+using System;
 
 public class GameSession : SingletonMonoBehaviour<GameSession>
 {
@@ -22,6 +23,7 @@ public class GameSession : SingletonMonoBehaviour<GameSession>
     [SerializeField] Sprite fullHearts;
     [SerializeField] Sprite emptyHearts;
 
+
     public void StartGame()
     {
         SelectCurrentPlayer(0);
@@ -33,8 +35,6 @@ public class GameSession : SingletonMonoBehaviour<GameSession>
         GameEvents.Instance.OnUpdateHealthUI += UpdateHealthUI;
         GameEvents.Instance.OnGameOver += GameOver;
         GameEvents.Instance.OnAddtoScore += AddToScore;
-        GameEvents.Instance.OnScoreReceived += GetScore;
-
     }
 
     private void SelectCurrentPlayer(int index)
@@ -47,14 +47,11 @@ public class GameSession : SingletonMonoBehaviour<GameSession>
             //players[index].HealthEarned(health: 4);
         }
     }
-    public int GetScore()
-    {
-        return score;
-    }
 
     public void AddToScore(int scoreValue)
     {
         score += scoreValue;
+        GameEvents.Instance.ScoreReceived(score);
     }
 
     public void UpdateHealthUI(int currentHealth)
@@ -76,11 +73,7 @@ public class GameSession : SingletonMonoBehaviour<GameSession>
     {
         AudioSource.PlayClipAtPoint(coinPickupSFX, Camera.main.transform.position, coinPickUPSFXVolume);
         earnedCoin += coin;
-    }
-
-    public int GetCoin()
-    {
-        return earnedCoin;
+        GameEvents.Instance.GetCoins(earnedCoin);
     }
 
     public async void GameOver()
@@ -103,6 +96,5 @@ public class GameSession : SingletonMonoBehaviour<GameSession>
         GameEvents.Instance.OnUpdateHealthUI -= UpdateHealthUI;
         GameEvents.Instance.OnGameOver -= GameOver;
         GameEvents.Instance.OnAddtoScore -= AddToScore;
-        GameEvents.Instance.OnScoreReceived -= GetScore;
     }
 }
