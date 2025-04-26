@@ -1,24 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Plane.Utils;
 
-public class MusicPlayer : MonoBehaviour
+public class MusicPlayer : SingletonMonoBehaviour<MusicPlayer> 
 {
-    // Start is called before the first frame update
-    void Awake()
-    {
-        SetUpSingleton();
-    }
-
-    public void SetUpSingleton()
-    {
-        if(FindObjectsOfType(GetType()).Length > 1)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-        }    
-    }
+    
 }

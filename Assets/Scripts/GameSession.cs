@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using Plane.Utils;
 
-public class GameSession : MonoBehaviour
+public class GameSession : SingletonMonoBehaviour<GameSession>
 {
     int score = 0;
     [SerializeField] int earnedCoin;
@@ -21,36 +22,18 @@ public class GameSession : MonoBehaviour
     [SerializeField] Sprite fullHearts;
     [SerializeField] Sprite emptyHearts;
 
-    public static GameSession Instance { get; private set; }
-    // Start is called before the first frame update
-    void Awake()
-    {
-        SetupSingleton();
-    }
-
-    public void SetupSingleton()
-    {
-        //if (FindObjectsOfType(GetType()).Length > 1)
-        //{
-        //    Destroy(gameObject);
-        //}
-        //else
-        //{
-        //    DontDestroyOnLoad(gameObject);
-        //}
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        Instance = this;
-        DontDestroyOnLoad(this.gameObject);
-    }
-
     public void StartGame()
     {
         SelectCurrentPlayer(0);
         StartCoroutine(spawner.StartWaves());
         startGameCanvas.SetActive(false);
+
+        //Events
+        GameEvents.Instance.OnRewardReceived += RewardCoin;
+        GameEvents.Instance.OnUpdateHealthUI += UpdateHealthUI;
+        GameEvents.Instance.OnGameOver += GameOver;
+        GameEvents.Instance.OnAddtoScore += AddToScore;
+
     }
 
     private void SelectCurrentPlayer(int index)
@@ -58,7 +41,8 @@ public class GameSession : MonoBehaviour
         if (!players[index].gameObject.activeInHierarchy)
         {
             var player = Instantiate(players[index], playerSpawnPoint.transform.position, Quaternion.identity);
-            player.GetComponent<Player>().HealthEarned(health: 4);
+            //player.GetComponent<Player>().HealthEarned(health: 4);
+            GameEvents.Instance.HealthReceived(healthAmount: 4);
             //players[index].HealthEarned(health: 4);
         }
     }
@@ -110,5 +94,13 @@ public class GameSession : MonoBehaviour
     public void ResetGame()
     {
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.Instance.OnRewardReceived -= RewardCoin;
+        GameEvents.Instance.OnUpdateHealthUI -= UpdateHealthUI;
+        GameEvents.Instance.OnGameOver -= GameOver;
+        GameEvents.Instance.OnAddtoScore -= AddToScore;
     }
 }

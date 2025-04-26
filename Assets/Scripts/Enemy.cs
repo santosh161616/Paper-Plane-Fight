@@ -1,3 +1,4 @@
+using Plane.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -62,7 +63,7 @@ public class Enemy : MonoBehaviour
         damageDealer.Hit(); 
         if (health <= 0)
         {
-            FindObjectOfType<GameSession>().AddToScore(scoreValue);
+            GameEvents.Instance.AddtoScore(scoreValue);
             Destroy(gameObject);
             GameObject explosion = Instantiate(explosionVFX, transform.position, transform.rotation);
             Destroy(explosion, 1.5f);

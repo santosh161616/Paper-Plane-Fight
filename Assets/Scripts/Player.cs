@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Plane.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,7 +39,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         SetupMoveBounderies();
-
+        GameEvents.Instance.OnHealthReceived += HealthEarned;
     }
 
     // Update is called once per frame
@@ -119,7 +120,7 @@ public class Player : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(healthPickupSFX, Camera.main.transform.position, healthPickUpSFXVolume);
             playerHealth += health;
-            GameSession.Instance.UpdateHealthUI(playerHealth);
+            GameEvents.Instance.UpdateHealthUI(playerHealth);
         }
     }
 
@@ -127,10 +128,10 @@ public class Player : MonoBehaviour
     {
         playerHealth -= damageDealer.GetDamage();
         damageDealer.Hit();
-        GameSession.Instance.UpdateHealthUI(playerHealth);
+        GameEvents.Instance.UpdateHealthUI(playerHealth);
         if (playerHealth <= 0f)
         {
-            FindObjectOfType<GameSession>().GameOver();
+            GameEvents.Instance.GameOver();
             gameObject.SetActive(false);
             AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSoundVolume);
         }
@@ -150,5 +151,10 @@ public class Player : MonoBehaviour
             }
         }
 
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.Instance.OnHealthReceived -= HealthEarned;
     }
 }
