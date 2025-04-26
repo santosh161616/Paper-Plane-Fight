@@ -34,5 +34,11 @@ namespace Plane.Utils
         {
             OnAddtoScore?.Invoke(scoreValue);
         }
+
+        public Action<int> OnScoreReceived = delegate { }; 
+        public void ScoreReceived(int score)
+        {
+            OnScoreReceived?.Invoke(score);
+        }
     }
 }

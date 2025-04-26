@@ -2,22 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Plane.Utils;
 
 public class DisplayScore : MonoBehaviour
 {
     TextMeshProUGUI scoreText;
-    GameSession gameSession;
     // Start is called before the first frame update
     void Start()
     {
         scoreText = GetComponent<TextMeshProUGUI>();
-        gameSession = FindObjectOfType<GameSession>();
-
+        GameEvents.Instance.OnScoreReceived += UpdateUI;
     }
 
-    // Update is called once per frame
-    void Update()
+    void UpdateUI(int score)
+    {        
+        scoreText.text = score.ToString();
+    }
+    private void OnDestroy()
     {
-        scoreText.text = gameSession.GetScore().ToString();
+        GameEvents.Instance.OnScoreReceived -= UpdateUI;
+
     }
 }

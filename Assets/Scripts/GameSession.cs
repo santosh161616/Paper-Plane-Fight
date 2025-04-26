@@ -33,6 +33,7 @@ public class GameSession : SingletonMonoBehaviour<GameSession>
         GameEvents.Instance.OnUpdateHealthUI += UpdateHealthUI;
         GameEvents.Instance.OnGameOver += GameOver;
         GameEvents.Instance.OnAddtoScore += AddToScore;
+        GameEvents.Instance.OnScoreReceived += GetScore;
 
     }
 
@@ -102,5 +103,6 @@ public class GameSession : SingletonMonoBehaviour<GameSession>
         GameEvents.Instance.OnUpdateHealthUI -= UpdateHealthUI;
         GameEvents.Instance.OnGameOver -= GameOver;
         GameEvents.Instance.OnAddtoScore -= AddToScore;
+        GameEvents.Instance.OnScoreReceived -= GetScore;
     }
 }
