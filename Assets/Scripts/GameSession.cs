@@ -22,7 +22,16 @@ public class GameSession : SingletonMonoBehaviour<GameSession>
     [SerializeField] public Image[] hearts;
     [SerializeField] Sprite fullHearts;
     [SerializeField] Sprite emptyHearts;
-
+    
+    private int _getPlayerLife;
+    public int GetPlayerLife
+    {
+        get
+        {
+            return hearts.Length;
+        }
+        private set => _getPlayerLife = hearts.Length;
+    }
 
     public void StartGame()
     {
@@ -42,9 +51,7 @@ public class GameSession : SingletonMonoBehaviour<GameSession>
         if (!players[index].gameObject.activeInHierarchy)
         {
             var player = Instantiate(players[index], playerSpawnPoint.transform.position, Quaternion.identity);
-            //player.GetComponent<Player>().HealthEarned(health: 4);
             GameEvents.Instance.HealthReceived(healthAmount: 4);
-            //players[index].HealthEarned(health: 4);
         }
     }
 

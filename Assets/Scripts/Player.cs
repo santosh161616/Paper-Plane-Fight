@@ -111,7 +111,7 @@ public class Player : MonoBehaviour
 
     public void HealthEarned(int health)
     {
-        if (playerHealth < GameSession.Instance.hearts.Length)
+        if (playerHealth < GameSession.Instance.GetPlayerLife)
         {
             AudioSource.PlayClipAtPoint(healthPickupSFX, Camera.main.transform.position, healthPickUpSFXVolume);
             playerHealth += health;
