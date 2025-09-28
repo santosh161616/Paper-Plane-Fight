@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Plane.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,7 +39,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         SetupMoveBounderies();
-
+        GameEvents.Instance.OnHealthReceived += HealthEarned;
     }
 
     // Update is called once per frame
@@ -93,7 +94,7 @@ public class Player : MonoBehaviour
             GameObject laser =
                     Instantiate(playerLaser, transform.position, Quaternion.identity)
                     as GameObject;
-            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, laserSpeed);
+            laser.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, laserSpeed);
             yield return new WaitForSeconds(prjectileFiringPeriod);
 
             //Player shooting soundSFX
@@ -108,18 +109,13 @@ public class Player : MonoBehaviour
         ProcessHit(damageDealer);
     }
 
-    public int GetHealth()
-    {
-        return playerHealth;
-    }
-
     public void HealthEarned(int health)
     {
-        if (playerHealth < GameSession.Instance.hearts.Length)
+        if (playerHealth < GameSession.Instance.GetPlayerLife)
         {
             AudioSource.PlayClipAtPoint(healthPickupSFX, Camera.main.transform.position, healthPickUpSFXVolume);
             playerHealth += health;
-            GameSession.Instance.UpdateHealthUI(playerHealth);
+            GameEvents.Instance.UpdateHealthUI(playerHealth);
         }
     }
 
@@ -127,10 +123,10 @@ public class Player : MonoBehaviour
     {
         playerHealth -= damageDealer.GetDamage();
         damageDealer.Hit();
-        GameSession.Instance.UpdateHealthUI(playerHealth);
+        GameEvents.Instance.UpdateHealthUI(playerHealth);
         if (playerHealth <= 0f)
         {
-            FindObjectOfType<GameSession>().GameOver();
+            GameEvents.Instance.GameOver();
             gameObject.SetActive(false);
             AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSoundVolume);
         }
@@ -150,5 +146,10 @@ public class Player : MonoBehaviour
             }
         }
 
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.Instance.OnHealthReceived -= HealthEarned;
     }
 }

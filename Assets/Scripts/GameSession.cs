@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using Plane.Utils;
+using System;
 
-public class GameSession : MonoBehaviour
+public class GameSession : SingletonMonoBehaviour<GameSession>
 {
     int score = 0;
     [SerializeField] int earnedCoin;
@@ -20,30 +22,15 @@ public class GameSession : MonoBehaviour
     [SerializeField] public Image[] hearts;
     [SerializeField] Sprite fullHearts;
     [SerializeField] Sprite emptyHearts;
-
-    public static GameSession Instance { get; private set; }
-    // Start is called before the first frame update
-    void Awake()
+    
+    private int _getPlayerLife;
+    public int GetPlayerLife
     {
-        SetupSingleton();
-    }
-
-    public void SetupSingleton()
-    {
-        //if (FindObjectsOfType(GetType()).Length > 1)
-        //{
-        //    Destroy(gameObject);
-        //}
-        //else
-        //{
-        //    DontDestroyOnLoad(gameObject);
-        //}
-        if (Instance != null && Instance != this)
+        get
         {
-            Destroy(this.gameObject);
+            return hearts.Length;
         }
-        Instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        private set => _getPlayerLife = hearts.Length;
     }
 
     public void StartGame()
@@ -51,6 +38,12 @@ public class GameSession : MonoBehaviour
         SelectCurrentPlayer(0);
         StartCoroutine(spawner.StartWaves());
         startGameCanvas.SetActive(false);
+
+        //Events
+        GameEvents.Instance.OnRewardReceived += RewardCoin;
+        GameEvents.Instance.OnUpdateHealthUI += UpdateHealthUI;
+        GameEvents.Instance.OnGameOver += GameOver;
+        GameEvents.Instance.OnAddtoScore += AddToScore;
     }
 
     private void SelectCurrentPlayer(int index)
@@ -58,18 +51,14 @@ public class GameSession : MonoBehaviour
         if (!players[index].gameObject.activeInHierarchy)
         {
             var player = Instantiate(players[index], playerSpawnPoint.transform.position, Quaternion.identity);
-            player.GetComponent<Player>().HealthEarned(health: 4);
-            //players[index].HealthEarned(health: 4);
+            GameEvents.Instance.HealthReceived(healthAmount: 4);
         }
-    }
-    public int GetScore()
-    {
-        return score;
     }
 
     public void AddToScore(int scoreValue)
     {
         score += scoreValue;
+        GameEvents.Instance.ScoreReceived(score);
     }
 
     public void UpdateHealthUI(int currentHealth)
@@ -91,11 +80,7 @@ public class GameSession : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(coinPickupSFX, Camera.main.transform.position, coinPickUPSFXVolume);
         earnedCoin += coin;
-    }
-
-    public int GetCoin()
-    {
-        return earnedCoin;
+        GameEvents.Instance.GetCoins(earnedCoin);
     }
 
     public async void GameOver()
@@ -110,5 +95,13 @@ public class GameSession : MonoBehaviour
     public void ResetGame()
     {
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.Instance.OnRewardReceived -= RewardCoin;
+        GameEvents.Instance.OnUpdateHealthUI -= UpdateHealthUI;
+        GameEvents.Instance.OnGameOver -= GameOver;
+        GameEvents.Instance.OnAddtoScore -= AddToScore;
     }
 }

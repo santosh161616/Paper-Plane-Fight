@@ -2,20 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Plane.Utils;
 public class DisplayRewardedCoins : MonoBehaviour
 {
-    GameSession gameSession;
     [SerializeField] TextMeshProUGUI textUI;
     // Start is called before the first frame update
     void Start()
     {
         textUI = GetComponent<TextMeshProUGUI>();
-        gameSession = FindObjectOfType<GameSession>();
+        GameEvents.Instance.OnGetCoin += UpdateCoinUI;
     }
 
-    // Update is called once per frame
-    void Update()
+    void UpdateCoinUI(int coin)
     {
-        textUI.text = gameSession.GetCoin().ToString();
+        textUI.text = coin.ToString();
+    }
+
+
+    private void OnDestroy()
+    {
+        GameEvents.Instance.OnGetCoin -= UpdateCoinUI;
     }
 }

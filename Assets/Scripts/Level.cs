@@ -12,20 +12,9 @@ public class Level : MonoBehaviour
 
     public void LoadLevel1()
     {
-        FindObjectOfType<GameSession>().ResetGame();
         SceneManager.LoadScene("Level 1");
     }
 
-    //public void LoadGameOver()
-    //{
-    //    StartCoroutine(WaitAfterPlayerDied());        
-    //}
-
-    //IEnumerator WaitAfterPlayerDied()
-    //{
-    //    yield return new WaitForSeconds(3f);
-    //    SceneManager.LoadScene("Game Over");
-    //}
     public void QuitGame()
     {
         Application.Quit();

@@ -54,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
         SpawnBoss(waveConfig);
     }
 
-    public async void SpawnBoss(WaveConfig waveConfig)
+    public void SpawnBoss(WaveConfig waveConfig)
     {
         var boss = Instantiate(waveConfig.GetBossPrefab(), waveConfig.GetBossWayPoints()[0].transform.position, Quaternion.identity);
         boss.GetComponent<EnemyPathing>().SetWaveConfig(waveConfig);

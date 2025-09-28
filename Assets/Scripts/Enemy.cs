@@ -1,3 +1,4 @@
+using Plane.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,7 +45,7 @@ public class Enemy : MonoBehaviour
         GameObject enemyLaser = Instantiate(
             enemyProjectile, 
             transform.position, Quaternion.identity) as GameObject;
-        enemyLaser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -enemyLaserSpeed);
+        enemyLaser.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -enemyLaserSpeed);
 
         //Audio for Emeny to shoot laser
         AudioSource.PlayClipAtPoint(enemyShootSFX, Camera.main.transform.position, enemyLaserVolume);
@@ -62,7 +63,7 @@ public class Enemy : MonoBehaviour
         damageDealer.Hit(); 
         if (health <= 0)
         {
-            FindObjectOfType<GameSession>().AddToScore(scoreValue);
+            GameEvents.Instance.AddtoScore(scoreValue);
             Destroy(gameObject);
             GameObject explosion = Instantiate(explosionVFX, transform.position, transform.rotation);
             Destroy(explosion, 1.5f);
@@ -77,12 +78,12 @@ public class Enemy : MonoBehaviour
         if(randomFactor < 20)
         {
             GameObject rewardPickup = Instantiate(powerUp, transform.position, transform.rotation);
-            rewardPickup.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -pickupSpeed);
+            rewardPickup.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -pickupSpeed);
         }
         if(randomFactor > 85)
         {
             GameObject rewardCoin = Instantiate(coinSpawn, transform.position, transform.rotation);
-            rewardCoin.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -pickupSpeed);
+            rewardCoin.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -pickupSpeed);
 
         }
     }

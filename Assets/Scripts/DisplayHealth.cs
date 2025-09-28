@@ -2,21 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Plane.Utils;
 
 public class DisplayHealth : MonoBehaviour
 {
     TextMeshProUGUI textHealth;
 
-    Player player;
     void Start()
     {
         textHealth = GetComponent<TextMeshProUGUI>();
-        player = FindObjectOfType<Player>();
+        GameEvents.Instance.OnUpdateHealthUI += UpdateHealthUI;
     }
 
     // Update is called once per frame
-    void Update()
+    void UpdateHealthUI(int healthValue)
     {
-        textHealth.text = player.GetHealth().ToString();
+        textHealth.text = healthValue.ToString();
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.Instance.OnUpdateHealthUI -= UpdateHealthUI;
     }
 }
