@@ -1,0 +1,16 @@
+{
+    "name": "collectables",
+    "rootNamespace": "collectables",
+    "references": [
+        "GUID:175eb30a49922e24eb1770f1b73e0bf3"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
