@@ -4,12 +4,14 @@ using Plane.Utils;
 
 namespace collectables
 {
+
     public class HealthPickUp : CollactableBase
     {
         [SerializeField] private int _value = 1;
-        public override void PickUp()
+
+        public override void ApplyEffect(GameObject collector)
         {
-            GameEvents.Instance.HealthReceived(_value);
+            throw new NotImplementedException();
         }
     }
 }
