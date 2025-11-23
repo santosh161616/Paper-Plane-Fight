@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entries:
   - collactableType: 0
-    id: 
-    prefab: {fileID: 0}
-    spawnProbability: 0
+    id: 01
+    prefab: {fileID: 692498465123365651, guid: 08dd6727ad16d494ea4401a6c3923482, type: 3}
+    spawnProbability: 0.8

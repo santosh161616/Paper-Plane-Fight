@@ -13,6 +13,8 @@ namespace collectables
         {
             public CollactableType collactableType;
             public string id;
+            public Sprite icon;
+            public string name;
             public GameObject prefab;
             public float spawnProbability; // Value between 0 and 1
         }
@@ -26,11 +28,29 @@ namespace collectables
     }
     public enum CollactableType
     {
+        Consumable,
+        Equipment
+    }
+
+    public enum ConsumableType
+    {
+        Health,
+        Mana,
+        Stamina,
+        Ammo,
         Coin,
         Gem,
         PowerUp,
         HealthPack,
         Shield,
         SpeedBoost
+    }
+
+    public enum EquipmentType
+    {
+        Weapon,
+        Armor,
+        Accessory,
+        Tool
     }
 }
