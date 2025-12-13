@@ -7,6 +7,11 @@ namespace Plane.popups
     {
         protected Action onYesAction;
         protected Action onNoAction;
+        private PopupAnimator animator;
+        protected virtual void Awake()
+        {
+            animator = GetComponent<PopupAnimator>();
+        }
         public virtual void Show(string message)
         {
             Show(message, "", null, null);
@@ -29,7 +34,16 @@ namespace Plane.popups
 
             // Implement UI display logic here
             UpdateUI(message, title);
-            gameObject.SetActive(true);
+
+            if(animator != null)
+            {
+                animator.PlayOpen();
+            }
+            else
+            {
+                gameObject.SetActive(true);
+            }
+
             OnShow();
 
         }
@@ -53,7 +67,17 @@ namespace Plane.popups
         {
             onNoAction = null;
             onYesAction = null;
-            gameObject.SetActive(false);
+            if (animator != null)
+            {
+                animator.PlayClose(() =>
+                {
+                    gameObject.SetActive(false);
+                });
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 }
