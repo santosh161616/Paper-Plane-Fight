@@ -44,10 +44,10 @@ namespace Plane.popups
 
         private void Start()
         {
-            ShowPopup<GeneralPopup>()
-                .Show("Welcome to the game!", "Welcome", 
-                onYes: () => Debug.Log("Player clicked Yes"), 
-                onNo: () => Debug.Log("Player clicked No"));
+            //ShowPopup<GeneralPopup>()
+            //    .Show("Welcome to the game!", "Welcome", 
+            //    onYes: () => Debug.Log("Player clicked Yes"), 
+            //    onNo: () => Debug.Log("Player clicked No"));
         }
 
         #region SimpleHandling
