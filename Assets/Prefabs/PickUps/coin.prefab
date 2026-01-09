@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 6233419820710758977}
   - component: {fileID: 6233419820710758976}
   - component: {fileID: 6233419820710758991}
-  - component: {fileID: 2693565568792007550}
+  - component: {fileID: -6650292781103037394}
+  - component: {fileID: 2164737192073261690}
   m_Layer: 11
   m_Name: coin
   m_TagString: Coin
@@ -52,6 +53,11 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -73,6 +79,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -89,7 +96,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!50 &6233419820710758976
 Rigidbody2D:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -100,8 +107,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -122,6 +129,7 @@ CircleCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6233419820710758990}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -145,11 +153,11 @@ CircleCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: -0.0014539063, y: -0.0058156997}
-  serializedVersion: 2
   m_Radius: 0.16263823
---- !u!114 &2693565568792007550
+--- !u!114 &-6650292781103037394
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,7 +166,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 6233419820710758990}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 784f3f5e8a1861f42adc6004a69d93aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 23b40f17bb19e844f8dc72c93670ce96, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  coinToReward: 1
+  m_EditorClassIdentifier: Assembly-CSharp::BombRotation
+  rotationSpeed: 360
+--- !u!114 &2164737192073261690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6233419820710758990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37dc57848958e0943b14bb2c56d69e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: collectables::collectables.CoinPickup
+  destroyOnCollect: 1
