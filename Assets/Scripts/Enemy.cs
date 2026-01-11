@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     float enemyLaserSpeed = 10f;
     float pickupSpeed = 4f;
     float shotCounter;
-    int scoreValue = 100;
+    int scoreValue = 1;
     
     // Start is called before the first frame update
     void Start()

@@ -5,6 +5,6 @@ namespace collectables
 {
     public interface ICollectable
     {
-        void PickUp(){}   
+        void PickUp(GameObject collector){}   
     }
 }
