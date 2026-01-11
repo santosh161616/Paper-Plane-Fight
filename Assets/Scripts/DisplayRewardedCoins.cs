@@ -9,6 +9,7 @@ public class DisplayRewardedCoins : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CoinManager.Load();
         GameEvents.Instance.OnGetCoin += UpdateCoinUI;
         textUI.text = CoinManager.Coins.ToString();
     }

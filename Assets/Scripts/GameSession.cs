@@ -57,8 +57,7 @@ public class GameSession : SingletonMonoBehaviour<GameSession>
 
     public void AddToScore(int scoreValue)
     {
-        score += scoreValue;
-        GameEvents.Instance.ScoreReceived(score);
+        GameEvents.Instance.ScoreReceived(scoreValue);
     }
 
     public void UpdateHealthUI(int currentHealth)

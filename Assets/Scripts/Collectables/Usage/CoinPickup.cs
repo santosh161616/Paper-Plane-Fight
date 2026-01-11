@@ -9,8 +9,8 @@ namespace collectables
         public override void ApplyEffect(GameObject collector)
         {
             //Add the logic to add coins to the player's total here
-            Debug.Log($"Coin PickUp collected! Added " +
-                $"{_coinValue} coins to {collector.name}"); 
+            //Debug.Log($"Coin PickUp collected! Added " +
+            //    $"{_coinValue} coins to {collector.name}"); 
             GameEvents.Instance.GetCoins(_coinValue);
         }
     }

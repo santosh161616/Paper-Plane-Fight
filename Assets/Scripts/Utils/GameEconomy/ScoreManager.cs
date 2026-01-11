@@ -17,20 +17,18 @@ namespace Plane.Utils
         public static void Add(int value)
         {
             currentScore += value;
-            Save();
-            GameEvents.Instance.ScoreReceived(currentScore);
+            Save(currentScore);
         }
 
         public static void Reset()
         {
             currentScore = 0;
-            Save();
-            GameEvents.Instance.ScoreReceived(currentScore);
+            Save(currentScore);
         }
 
-        private static void Save()
+        private static void Save(int score)
         {
-            PlayerPrefs.SetInt(SCORE_KEY, currentScore);
+            PlayerPrefs.SetInt(SCORE_KEY, score);
             PlayerPrefs.Save();
         }
     }
