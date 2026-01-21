@@ -174,3 +174,4 @@ MonoBehaviour:
   enemyShootSFX: {fileID: 8300000, guid: 9348b99ac04f1044aad8eb7b20cf6eab, type: 3}
   deathSoundVolume: 0.7
   enemyLaserVolume: 0.5
+  lootTable: {fileID: 11400000, guid: 9a976aa031d04fa4b9868bb052d4a6e2, type: 2}

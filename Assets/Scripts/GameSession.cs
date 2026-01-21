@@ -38,7 +38,7 @@ public class GameSession : SingletonMonoBehaviour<GameSession>
         SelectCurrentPlayer(0);
         StartCoroutine(spawner.StartWaves());
         startGameCanvas.SetActive(false);
-
+        UpdateHealthUI(4);
         //Events
         GameEvents.Instance.OnRewardReceived += RewardCoin;
         GameEvents.Instance.OnUpdateHealthUI += UpdateHealthUI;

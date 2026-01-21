@@ -18,6 +18,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] [Range(0, 1)] float deathSoundVolume = 0.7f;
     [SerializeField] [Range(0, 1)] float enemyLaserVolume = 0.5f;
 
+    // New: Data-driven loot table (optional). If assigned, it will be used instead of legacy PickUpChance.
+    [SerializeField] LootTable lootTable;
+
     float enemyLaserSpeed = 10f;
     float pickupSpeed = 4f;
     float shotCounter;
@@ -67,11 +70,22 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
             GameObject explosion = Instantiate(explosionVFX, transform.position, transform.rotation);
             Destroy(explosion, 1.5f);
-            PickUpChance();
+
+            // Use data-driven loot if available, otherwise use legacy fallback
+            if (lootTable != null)
+            {
+                lootTable.Spawn(transform.position);
+            }
+            else
+            {
+                PickUpChance();
+            }
+
             AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSoundVolume);
         }
     }
 
+    // Legacy fallback kept for compatibility
     private void PickUpChance()
     {
         int randomFactor = Random.Range(0, 100);
@@ -84,7 +98,6 @@ public class Enemy : MonoBehaviour
         {
             GameObject rewardCoin = Instantiate(coinSpawn, transform.position, transform.rotation);
             rewardCoin.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -pickupSpeed);
-
         }
     }
 }

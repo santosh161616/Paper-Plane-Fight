@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if UNITY_EDITOR
+using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -193,8 +194,6 @@ namespace Plane.Utils
             EditorGUILayout.EndScrollView();
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
 
-
-
             // Play from first scene
             if (activeScenes.Length > 0)
             {
@@ -260,3 +259,4 @@ namespace Plane.Utils
 
     }
 }
+#endif

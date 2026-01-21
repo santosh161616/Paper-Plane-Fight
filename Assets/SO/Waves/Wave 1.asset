@@ -16,7 +16,7 @@ MonoBehaviour:
   bossPrefab: {fileID: 6773797509114471155, guid: c8318578956dea0429408fa22d156096, type: 3}
   pathPrefab: {fileID: 3603363111701125292, guid: 96409c4a765a5a440b5d0cfaca7ab9ad, type: 3}
   bossPath: {fileID: 433229993467125913, guid: b63fb8972438d174fa1e28b82cb9ecb7, type: 3}
-  timeBetweenSpawns: 0.5
+  timeBetweenSpawns: 0.8
   spawnRandomFactor: 0.3
   numberOfEnemies: 5
   moveSpeed: 1
