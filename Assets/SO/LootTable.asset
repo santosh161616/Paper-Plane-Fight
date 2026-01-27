@@ -15,7 +15,7 @@ MonoBehaviour:
   entries:
   - id: 
     prefab: {fileID: 6233419820710758990, guid: a7d18e89e8926094cbafcc03e2db4d9a, type: 3}
-    chance: 0.05
+    chance: 0.02
     minCount: 1
     maxCount: 1
     fallSpeed: 4
@@ -23,7 +23,7 @@ MonoBehaviour:
     popScale: 0.12
   - id: 
     prefab: {fileID: 692498465123365651, guid: 08dd6727ad16d494ea4401a6c3923482, type: 3}
-    chance: 0.08
+    chance: 0.01
     minCount: 1
     maxCount: 1
     fallSpeed: 5
