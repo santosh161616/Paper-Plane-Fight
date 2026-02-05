@@ -30,6 +30,9 @@ public class Player : MonoBehaviour
     [SerializeField] float magnetStrength = 5f;
     [SerializeField] bool isMagnetic = true;
 
+    [Header("Shield")]
+    [SerializeField] private Shield _playerShield;
+
     float xMin;
     float xMax;
     float yMin;
@@ -228,6 +231,15 @@ public class Player : MonoBehaviour
 
     public void HealthEarned(int health)
     {
+        Shield shield = GetComponentInChildren<Shield>();
+        
+        if (shield==null || !shield.IsActive)
+        {
+            var activeShield = Instantiate(_playerShield, transform);
+            activeShield.Activate();
+            Debug.Log("Shield Activated via Health Pickup");
+        }
+
         if (playerHealth < GameSession.Instance.GetPlayerLife)
         {
             if (healthPickupSFX != null && Camera.main != null)
@@ -240,8 +252,27 @@ public class Player : MonoBehaviour
 
     private void ProcessHit(DamageDealer damageDealer)
     {
-        playerHealth -= damageDealer.GetDamage();
+        int incoming = damageDealer.GetDamage();
+
+        // If player has an active shield, let it try to absorb first.
+        Shield shield = GetComponentInChildren<Shield>();
+        if (shield != null && shield.IsActive)
+        {
+            incoming = shield.AbsorbDamage(incoming);
+        }
+
+        // Destroy the damaging object (projectile) in any case.
         damageDealer.Hit();
+
+        // If shield absorbed all damage, update UI and return early.
+        if (incoming <= 0)
+        {
+            GameEvents.Instance.UpdateHealthUI(playerHealth);
+            return;
+        }
+
+        // Apply remaining damage to player health.
+        playerHealth -= incoming;
         GameEvents.Instance.UpdateHealthUI(playerHealth);
         if (playerHealth <= 0f)
         {
